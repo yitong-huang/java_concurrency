@@ -15,7 +15,6 @@ public class ApplicationContext {
     private final ConcurrentHashMap<Thread, ActionContext> contexts = new ConcurrentHashMap<>();
     // ...其他实例
 
-
     public ActionContext getActionContext() {
         ActionContext actionContext = contexts.get(Thread.currentThread());
         if (actionContext == null) {
@@ -24,6 +23,7 @@ public class ApplicationContext {
         }
         return actionContext;
     }
+
     // 采用Holder实现单例
     private static class Holder {
         private static ApplicationContext instance = new ApplicationContext();
